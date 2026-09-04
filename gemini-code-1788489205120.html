@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Street Sector Apparel - Leave a Review</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+    .profile-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #4285f4;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0 auto 16px;
+    }
+    h2 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      color: #1f1f1f;
+    }
+    p {
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: #5f6368;
+    }
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      cursor: pointer;
+    }
+    .star {
+      font-size: 36px;
+      color: #f4b400; /* Pre-filled active 5-star color */
+      transition: transform 0.1s ease;
+    }
+    .star:hover {
+      transform: scale(1.15);
+    }
+    .submit-btn {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+    }
+    .submit-btn:hover {
+      background-color: #1557b0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="profile-img">S</div>
+    <h2>Street Sector Apparel</h2>
+    <p>How was your experience with us?</p>
+    
+    <!-- Pre-selected 5 Stars -->
+    <div class="stars" id="star-container">
+      <span class="star" onclick="setRating(1)">★</span>
+      <span class="star" onclick="setRating(2)">★</span>
+      <span class="star" onclick="setRating(3)">★</span>
+      <span class="star" onclick="setRating(4)">★</span>
+      <span class="star" onclick="setRating(5)">★</span>
+    </div>
+
+    <button class="submit-btn" onclick="redirectToGoogle()">Continue to Google Review</button>
+  </div>
+
+  <script>
+    let currentRating = 5;
+    const placeId = "ChIJ8_Q6Iia_lzMRHjA-q6mXJ94";
+    const googleReviewUrl = "https://search.google.com/local/writereview?placeid=" + placeId;
+
+    function setRating(rating) {
+      currentRating = rating;
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star, index) => {
+        star.style.color = index < rating ? '#f4b400' : '#dadce0';
+      });
+    }
+
+    function redirectToGoogle() {
+      // Directs the user straight to Google's official review form without 400 errors
+      window.location.href = googleReviewUrl;
+    }
+  </script>
+
+</body>
+</html>
