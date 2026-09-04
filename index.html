@@ -85,8 +85,8 @@
       <span class="star" onclick="setRating(5)">★</span>
     </div>
 
-    <!-- Exact Valid Google Place ID URL -->
-    <a href="https://search.google.com/local/writereview?placeid=ChIJ8_Q6Iia_lzMRHjA-q6mXJ94" 
+    <!-- Official Direct Search & Review Endpoint -->
+    <a href="https://www.google.com/search?q=Street+Sector+Apparel+Antipolo#lrd=0x3397bf26223af4f3:0xde2797a9abbe301e,3" 
        target="_top" 
        class="submit-btn" 
        onclick="redirectToGoogle(event)">
@@ -96,7 +96,8 @@
 
   <script>
     let currentRating = 5;
-    const googleReviewUrl = "https://search.google.com/local/writereview?placeid=ChIJ8_Q6Iia_lzMRHjA-q6mXJ94";
+    // Direct Google search parameter that forces the review card open on Google Maps / Search
+    const googleReviewUrl = "https://www.google.com/search?q=Street+Sector+Apparel+Antipolo#lrd=0x3397bf26223af4f3:0xde2797a9abbe301e,3";
 
     function setRating(rating) {
       currentRating = rating;
