@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Street Sector Apparel - Leave a Review</title>
+  <title>Street Sector Apparel - Google Review</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -38,16 +38,8 @@
       font-weight: bold;
       margin: 0 auto 16px;
     }
-    h2 {
-      margin: 0 0 6px;
-      font-size: 20px;
-      color: #1f1f1f;
-    }
-    p {
-      margin: 0 0 20px;
-      font-size: 14px;
-      color: #5f6368;
-    }
+    h2 { margin: 0 0 6px; font-size: 20px; color: #1f1f1f; }
+    p { margin: 0 0 20px; font-size: 14px; color: #5f6368; }
     .stars {
       display: flex;
       justify-content: center;
@@ -57,12 +49,10 @@
     }
     .star {
       font-size: 36px;
-      color: #f4b400; /* Pre-filled active 5-star color */
+      color: #f4b400;
       transition: transform 0.1s ease;
     }
-    .star:hover {
-      transform: scale(1.15);
-    }
+    .star:hover { transform: scale(1.15); }
     .submit-btn {
       background-color: #1a73e8;
       color: white;
@@ -74,10 +64,10 @@
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+      text-decoration: none;
+      display: block;
     }
-    .submit-btn:hover {
-      background-color: #1557b0;
-    }
+    .submit-btn:hover { background-color: #1557b0; }
   </style>
 </head>
 <body>
@@ -87,7 +77,6 @@
     <h2>Street Sector Apparel</h2>
     <p>How was your experience with us?</p>
     
-    <!-- Pre-selected 5 Stars -->
     <div class="stars" id="star-container">
       <span class="star" onclick="setRating(1)">★</span>
       <span class="star" onclick="setRating(2)">★</span>
@@ -96,13 +85,19 @@
       <span class="star" onclick="setRating(5)">★</span>
     </div>
 
-    <button class="submit-btn" onclick="redirectToGoogle()">Continue to Google Review</button>
+    <!-- Corrected Official Google Review URL -->
+    <a href="https://search.google.com/local/writereview?placeid=ChIJ8_Q6Iia_lzMRHjA-q6mXJ94" 
+       target="_top" 
+       class="submit-btn" 
+       onclick="redirectToGoogle(event)">
+       Continue to Google Review
+    </a>
   </div>
 
   <script>
     let currentRating = 5;
-    const placeId = "ChIJ8_Q6Iia_lzMRHjA-q6mXJ94";
-    const googleReviewUrl = "https://search.google.com/local/writereview?placeid=" + placeId;
+    // Valid Place ID string
+    const googleReviewUrl = "https://search.google.com/local/writereview?placeid=ChIJ8_Q6Iia_lzMRHjA-q6mXJ94";
 
     function setRating(rating) {
       currentRating = rating;
@@ -112,9 +107,13 @@
       });
     }
 
-    function redirectToGoogle() {
-      // Directs the user straight to Google's official review form without 400 errors
-      window.location.href = googleReviewUrl;
+    function redirectToGoogle(e) {
+      e.preventDefault();
+      if (window.top) {
+        window.top.location.href = googleReviewUrl;
+      } else {
+        window.location.href = googleReviewUrl;
+      }
     }
   </script>
 
