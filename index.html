@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Street Sector Apparel - Google Review</title>
+  <title>Street Sector Apparel - Leave a Review</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -19,7 +19,7 @@
     .card {
       background: #ffffff;
       border-radius: 16px;
-      padding: 28px 24px;
+      padding: 32px 24px;
       max-width: 380px;
       width: 100%;
       text-align: center;
@@ -39,16 +39,16 @@
       margin: 0 auto 16px;
     }
     h2 { margin: 0 0 6px; font-size: 20px; color: #1f1f1f; }
-    p { margin: 0 0 20px; font-size: 14px; color: #5f6368; }
+    p { margin: 0 0 24px; font-size: 14px; color: #5f6368; }
     .stars {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 28px;
       cursor: pointer;
     }
     .star {
-      font-size: 36px;
+      font-size: 38px;
       color: #f4b400;
       transition: transform 0.1s ease;
     }
@@ -85,19 +85,18 @@
       <span class="star" onclick="setRating(5)">★</span>
     </div>
 
-    <!-- Official Direct Search & Review Endpoint -->
-    <a href="https://www.google.com/search?q=Street+Sector+Apparel+Antipolo#lrd=0x3397bf26223af4f3:0xde2797a9abbe301e,3" 
-       target="_top" 
+    <!-- Dual Desktop & Mobile Compatible Target -->
+    <a href="https://maps.google.com/?cid=16007994646700814366&action=write_review" 
+       target="_blank" 
+       rel="noopener noreferrer"
        class="submit-btn" 
-       onclick="redirectToGoogle(event)">
+       id="review-btn">
        Continue to Google Review
     </a>
   </div>
 
   <script>
     let currentRating = 5;
-    // Direct Google search parameter that forces the review card open on Google Maps / Search
-    const googleReviewUrl = "https://www.google.com/search?q=Street+Sector+Apparel+Antipolo#lrd=0x3397bf26223af4f3:0xde2797a9abbe301e,3";
 
     function setRating(rating) {
       currentRating = rating;
@@ -105,15 +104,6 @@
       stars.forEach((star, index) => {
         star.style.color = index < rating ? '#f4b400' : '#dadce0';
       });
-    }
-
-    function redirectToGoogle(e) {
-      e.preventDefault();
-      if (window.top) {
-        window.top.location.href = googleReviewUrl;
-      } else {
-        window.location.href = googleReviewUrl;
-      }
     }
   </script>
 
